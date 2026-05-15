@@ -38,6 +38,27 @@ export interface ProgressData {
     totalToday: number;
 }
 
+export interface Briefing {
+    id: string;
+    type: 'morning' | 'midday' | 'evening';
+    content: string;
+    timestamp: string;
+    isRead: boolean;
+}
+
+export interface Affirmation {
+    id: string;
+    statement: string;
+    emotionalCharge: string;
+}
+
+export interface FutureMemory {
+    id: string;
+    title: string;
+    visionImageUrl?: string;
+    emotions: string[];
+}
+
 export interface VRDashboardState {
     // Widget data
     intentions: Intention[];
@@ -46,6 +67,9 @@ export interface VRDashboardState {
     emotional: EmotionalState;
     progress: ProgressData;
     exocortexMessages: { role: 'user' | 'assistant'; content: string }[];
+    briefings: Briefing[];
+    affirmations: Affirmation[];
+    futureMemories: FutureMemory[];
 
     // VR state
     activePanel: string | null;
@@ -92,6 +116,18 @@ export const useVRStore = create<VRDashboardState>((set) => ({
         { role: 'assistant', content: 'Good evening, Commander. Your vitals show strong coherence. Cycle alignment at 87%.' },
         { role: 'user', content: 'What should I focus on tonight?' },
         { role: 'assistant', content: 'Based on your current trajectory, I recommend completing the Quantum Weaver session and reviewing tomorrow\'s cycle convergence.' },
+    ],
+    briefings: [
+        { id: '1', type: 'evening', content: 'Your evening synthesis is ready. The 80-year cycle shows peak alignment tomorrow. Prepare accordingly.', timestamp: '2026-05-14T20:00:00Z', isRead: false },
+        { id: '2', type: 'midday', content: 'Midday check-in. Vitals indicate slight tension. Consider a brief somatic reset.', timestamp: '2026-05-14T12:00:00Z', isRead: true }
+    ],
+    affirmations: [
+        { id: '1', statement: 'I am the sovereign architect of my reality.', emotionalCharge: 'Empowered' },
+        { id: '2', statement: 'My body is a vessel for infinite cosmic energy.', emotionalCharge: 'Radiant' }
+    ],
+    futureMemories: [
+        { id: '1', title: 'The Launch of EarthShift', emotions: ['Pride', 'Relief', 'Awe'] },
+        { id: '2', title: 'Global Coherence Event', emotions: ['Unity', 'Peace'] }
     ],
 
     activePanel: null,

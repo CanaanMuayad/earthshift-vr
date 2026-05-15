@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from 'react';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 export interface GlassPanelProps {
@@ -82,7 +82,6 @@ export function GlassPanel({
     const [dragging, setDragging] = useState(false);
     const dragStart = useRef<THREE.Vector3 | null>(null);
     const posStart = useRef<THREE.Vector3 | null>(null);
-    const { camera, raycaster } = useThree();
 
     // Smooth hover + active + drag transitions
     useFrame((_, delta) => {

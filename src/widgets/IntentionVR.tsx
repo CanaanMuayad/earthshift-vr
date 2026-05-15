@@ -1,10 +1,11 @@
+
 import { Text } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
-import * as THREE from 'three';
 import { useVRStore } from '../store/vrStore';
 import { GlassPanel } from '../components/GlassPanel';
 import { VRButton } from '../components/VRButton';
+import { useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
+import * as THREE from 'three';
 
 interface Props {
     isFocused: boolean;
@@ -77,6 +78,7 @@ export function IntentionVR({ isFocused, onFocus }: Props) {
             ))}
 
             {/* Action button when focused */}
+
             {isFocused && (
                 <VRButton
                     position={[0, -0.62, 0]}
